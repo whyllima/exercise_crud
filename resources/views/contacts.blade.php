@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <!-- Required meta tags -->
@@ -12,14 +13,14 @@
 
     <title>Contacts</title>
 
-    <link href="index.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/styles.css') }}" rel="stylesheet">
 </head>
 
 <body>
 
     <nav class="navbar navbar-dark bg-mynav">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">My App</a>
+            <a class="navbar-brand" href="#">Contacts</a>
         </div>
     </nav>
 
@@ -29,26 +30,35 @@
                 <h2>Users
             </div>
             <div class="p-2 bd-highlight">
-                <button type="button" class="btn btn-secondary" onclick="showUserCreateBox()">Create</button>
+                <button type="button" class="btn btn-success"
+                    onclick="window.location='{{ URL::route('newContact') }}'">Create</button>
             </div>
         </div>
-
         <div class="table-responsive">
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Avatar</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">e-mail</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody id="mytable">
-                    <tr>
-                        <th scope="row" colspan="5">Loading...</th>
-                    </tr>
+                    @foreach ($contacts as $contact)
+                        <tr>
+                            <td>{{ $contact['id'] }}</td>
+                            <td>{{ $contact['name'] }}</td>
+                            <td>{{ $contact['contact'] }}</td>
+                            <td>{{ $contact['email'] }}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" onclick="showDetails()">Details</button>
+                                <button type="button" class="btn btn-danger" onclick="editContact()">Edit</button>
+                                <button type="button" class="btn btn-warning" onclick="deleteContact()">Delete</button>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

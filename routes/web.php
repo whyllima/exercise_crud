@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('contacts');
-});
+Route::get('/', [ContactController::class, 'contactsHome'])->name('contactsHome');
+Route::get('/new-contact', [ContactController::class, 'newContact'])->name('newContact');
