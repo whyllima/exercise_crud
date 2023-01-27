@@ -51,8 +51,10 @@
                         <td>{{ $contact['contact'] }}</td>
                         <td>{{ $contact['email'] }}</td>
                         <td scope="row">
-                            <button type="button" class="btn btn-warning" onclick="editContact()">Edit</button>
-                            <button type="button" class="btn btn-danger" onclick="editContact()">Delete</button>
+                            <button type="button" class="btn btn-warning"
+                                onclick="window.location='{{ URL::route('editContact', [$contact['id']]) }}'">Edit</button>
+                            <button type="button" class="btn btn-danger" method="POST"
+                                onclick="window.location='{{ URL::route('deleteContact', [$contact['id']]) }}'">Delete</button>
                         </td>
                     </tr>
                 </tbody>

@@ -26,6 +26,10 @@ Route::get('/login', function () {
     return view('login');
 })->name('loginPage');
 
+Route::get('/edit', function () {
+    return view('edit_contact');
+})->name('editContactPage');
+
 Route::controller(AuthController::class)->group(function () {
     Route::post('login', 'login')->name('login');
     Route::post('register', 'register');
@@ -38,4 +42,6 @@ Route::controller(ContactController::class)->group(function () {
     Route::get('contact/delete/{id}', 'destroy')->name('deleteContact');
     Route::get('contacts', 'getAllContacts');
     Route::get('contact/{id}', 'getContact')->name('getContact');
+    Route::get('contact/edit/{id}', 'editContact')->name('editContact');
+    Route::get('contact/update/{id}', 'update')->name('updateContact');
 });

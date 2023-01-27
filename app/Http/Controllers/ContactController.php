@@ -58,4 +58,22 @@ class ContactController extends Controller
 
         return redirect()->route('contactsHome');
     }
+
+    public function editContact($id)
+    {
+        $contact = Contact::find($id);
+        return view('edit_contact', compact('contact'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $contact = Contact::where('id', $id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'contact' => $request->contact
+        ]);
+        if ($contact) {
+            return redirect()->route('getContact', [$id]);
+        }
+    }
 }
