@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-    <title>Contacts</title>
+    <title>Contact</title>
 
 </head>
 
@@ -19,20 +19,18 @@
 
     <nav class="navbar navbar-dark bg-mynav">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Contacts</a>
+            <a class="navbar-brand" href="#">Contact</a>
         </div>
     </nav>
 
     <div class="container">
         <div class="d-flex bd-highlight mb-3">
             <div class="me-auto p-2 bd-highlight">
-                <h2>Users
+                <h2>Details
             </div>
             <div class="p-2 bd-highlight">
-                <button type="button" class="btn btn-success"
-                    onclick="window.location='{{ URL::route('newContact') }}'">Create</button>
                 <button type="button" class="btn btn-primary"
-                    onclick="window.location='{{ URL::route('loginPage') }}'">Login</button>
+                    onclick="window.location='{{ URL::route('contactsHome') }}'">Home</button>
             </div>
         </div>
         <div class="table-responsive">
@@ -47,20 +45,16 @@
                     </tr>
                 </thead>
                 <tbody id="mytable">
-                    @foreach ($contacts as $contact)
-                        <tr>
-                            <td>{{ $contact['id'] }}</td>
-                            <td>{{ $contact['name'] }}</td>
-                            <td>{{ $contact['contact'] }}</td>
-                            <td>{{ $contact['email'] }}</td>
-                            <td scope="row">
-                                <button type="button" class="btn btn-primary"
-                                    onclick="window.location='{{ URL::route('getContact', [$contact['id']]) }}'">Details</button>
-                                <button type="button" class="btn btn-warning" onclick="editContact()">Edit</button>
-                                <button type="button" class="btn btn-danger" onclick="editContact()">Delete</button>
-                            </td>
-                        </tr>
-                    @endforeach
+                    <tr>
+                        <td>{{ $contact['id'] }}</td>
+                        <td>{{ $contact['name'] }}</td>
+                        <td>{{ $contact['contact'] }}</td>
+                        <td>{{ $contact['email'] }}</td>
+                        <td scope="row">
+                            <button type="button" class="btn btn-warning" onclick="editContact()">Edit</button>
+                            <button type="button" class="btn btn-danger" onclick="editContact()">Delete</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

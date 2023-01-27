@@ -38,6 +38,12 @@ class ContactController extends Controller
         ]);
     }
 
+    public function getContact($id)
+    {
+        $contact = Contact::find($id);
+        return view('contact', compact('contact'));
+    }
+
     public function contactsHome()
     {
         $contacts = Contact::all();

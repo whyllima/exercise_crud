@@ -37,4 +37,5 @@ Route::controller(ContactController::class)->group(function () {
     Route::post('contact/register', 'register')->name('registerContact');
     Route::post('destroy/{id}', 'destroy')->name('destroy');
     Route::get('contacts', 'getAllContacts');
+    Route::get('contact/{id}', 'getContact')->name('getContact');
 });
