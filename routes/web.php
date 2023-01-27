@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -16,4 +17,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ContactController::class, 'contactsHome'])->name('contactsHome');
-Route::get('/new-contact', [ContactController::class, 'newContact'])->name('newContact');
+
+Route::get('/new-contact', function () {
+    return view('new_contact');
+})->name('newContact');
+Route::get('/login', function () {
+    return view('login');
+})->name('loginPage');
+
+Route::controller(AuthController::class)->group(function () {
+    Route::post('login', 'login')->name('login');
+    Route::post('register', 'register');
+    Route::post('logout', 'logout');
+    Route::post('refresh', 'refresh');
+});

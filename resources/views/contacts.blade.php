@@ -32,6 +32,8 @@
             <div class="p-2 bd-highlight">
                 <button type="button" class="btn btn-success"
                     onclick="window.location='{{ URL::route('newContact') }}'">Create</button>
+                <button type="button" class="btn btn-primary"
+                    onclick="window.location='{{ URL::route('loginPage') }}'">Login</button>
             </div>
         </div>
         <div class="table-responsive">

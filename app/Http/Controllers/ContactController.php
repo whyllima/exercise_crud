@@ -9,7 +9,7 @@ class ContactController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getAllContacts', 'contactsHome', 'newContact']]);
+        $this->middleware('auth:api', ['except' => ['getAllContacts', 'contactsHome', 'newContact', 'login']]);
     }
 
     public function register(Request $request)
@@ -46,10 +46,5 @@ class ContactController extends Controller
     {
         $contacts = Contact::all();
         return view('contacts', compact('contacts'));
-    }
-
-    public function newContact()
-    {
-        return view('new_contact');
     }
 }
