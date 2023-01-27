@@ -57,7 +57,8 @@
                                 <button type="button" class="btn btn-primary"
                                     onclick="window.location='{{ URL::route('getContact', [$contact['id']]) }}'">Details</button>
                                 <button type="button" class="btn btn-warning" onclick="editContact()">Edit</button>
-                                <button type="button" class="btn btn-danger" onclick="editContact()">Delete</button>
+                                <button type="button" class="btn btn-danger" method="POST"
+                                    onclick="window.location='{{ URL::route('deleteContact', [$contact['id']]) }}'">Delete</button>
                             </td>
                         </tr>
                     @endforeach

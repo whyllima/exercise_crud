@@ -81,6 +81,8 @@
                                     <button type="submit" class="btn btn-primary">
                                         Save
                                     </button>
+                                    <button type="button" class="btn btn-danger"
+                                        onclick="window.location='{{ URL::route('contactsHome') }}'">Cancel</button>
                                 </div>
                             </div>
                         </form>
