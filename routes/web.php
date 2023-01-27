@@ -21,6 +21,7 @@ Route::get('/', [ContactController::class, 'contactsHome'])->name('contactsHome'
 Route::get('/new-contact', function () {
     return view('new_contact');
 })->name('newContact');
+
 Route::get('/login', function () {
     return view('login');
 })->name('loginPage');
@@ -30,4 +31,10 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('register', 'register');
     Route::post('logout', 'logout');
     Route::post('refresh', 'refresh');
+});
+
+Route::controller(ContactController::class)->group(function () {
+    Route::post('contact/register', 'register')->name('registerContact');
+    Route::post('destroy/{id}', 'destroy')->name('destroy');
+    Route::get('contacts', 'getAllContacts');
 });

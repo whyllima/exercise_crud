@@ -54,10 +54,10 @@
                             <td>{{ $contact['name'] }}</td>
                             <td>{{ $contact['contact'] }}</td>
                             <td>{{ $contact['email'] }}</td>
-                            <td>
+                            <td scope="row">
                                 <button type="button" class="btn btn-primary" onclick="showDetails()">Details</button>
-                                <button type="button" class="btn btn-danger" onclick="editContact()">Edit</button>
-                                <button type="button" class="btn btn-warning" onclick="deleteContact()">Delete</button>
+                                <button type="button" class="btn btn-warning" onclick="editContact()">Edit</button>
+                                <button type="button" class="btn btn-danger" onclick="editContact()">Delete</button>
                             </td>
                         </tr>
                     @endforeach

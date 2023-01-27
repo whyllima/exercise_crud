@@ -9,7 +9,7 @@ class ContactController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getAllContacts', 'contactsHome', 'newContact', 'login']]);
+        // $this->middleware('auth:api', ['except' => ['getAllContacts', 'contactsHome', 'newContact', 'login']]);
     }
 
     public function register(Request $request)
@@ -27,11 +27,7 @@ class ContactController extends Controller
         ]);
 
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Contact created successfully',
-            'contact' => $contact
-        ]);
+        return redirect()->route('contactsHome');
     }
 
     public function getAllContacts()
@@ -46,5 +42,14 @@ class ContactController extends Controller
     {
         $contacts = Contact::all();
         return view('contacts', compact('contacts'));
+    }
+
+    public function destroy($id)
+    {
+        $contact = Contact::find($id);
+
+        $contact->delete();
+
+        return redirect()->route('contactsHome');
     }
 }
